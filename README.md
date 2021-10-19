@@ -15,10 +15,23 @@ We pooled all 18 SMRT Cells 1M into a single dataset and ran through Iso-Seq Ana
 We mapped the HQ transcripts to the bear genome using [minimap2](https://github.com/lh3/minimap2) and collapsed it using [Cupcake](https://github.com/Magdoll/cDNA_Cupcake), in particular the [post-Iso-Seq processing tutorial](https://github.com/Magdoll/cDNA_Cupcake/wiki/Cupcake:-supporting-scripts-for-Iso-Seq-after-clustering-step).
 
 ```
-minimap2 -ax splice -t 30 -uf --secondary=no -C5 GCF_003584765.1_ASM358476v1_genomic.fna hq_transcripts.fasta > hq_transcripts.fasta.sam
+minimap2 -ax splice -t 30 -uf --secondary=no -C5 \ 
+       GCF_003584765.1_ASM358476v1_genomic.fna \
+       hq_transcripts.fasta > \
+       hq_transcripts.fasta.sam
+       
 sort -k 3,3 -k 4,4n hq_transcripts.fasta.sam > hq_transcripts.fasta.sorted.sam
-collapse_isoforms_by_sam.py  --input hq_transcripts.fasta -s hq_transcripts.fasta.sorted.sam -c 0.99 -i 0.95 --dun-merge-5-shorter -o hq.no5merge
-get_abundance_post_collapse.py hq.no5merge.collapsed cluster_report.csv
+
+collapse_isoforms_by_sam.py  --input hq_transcripts.fasta \
+       -s hq_transcripts.fasta.sorted.sam \
+       -c 0.99 -i 0.95 \
+       --dun-merge-5-shorter \
+       -o hq.no5merge
+       
+get_abundance_post_collapse.py \
+       hq.no5merge.collapsed \
+       cluster_report.csv
+
 filter_away_subset.py hq.no5merge.collapsed
 ```
 
@@ -27,7 +40,11 @@ filter_away_subset.py hq.no5merge.collapsed
 We create a custom `classify_report.csv` where each full-length (FLNC) read has the proper sample labeling (ex: `CF1N`). Samples are named by the convention `[bear][tissue-F:fat,M:muscle,L:liver][1N:hibernation or 3N:active]`. 
 
 ```
-python <path_to_cupcake>/post_isoseq_cluster/demux_isoseq_with_genome.py --mapped_fafq hq.no5merge.collapsed.filtered.rep.fa --read_stat hq.no5merge.collapsed.read_stat.txt --classify_csv classify_report.csv -o hq.no5merge.collapsed.filtered.mapped_fl_count.txt
+python <path_to_cupcake>/post_isoseq_cluster/demux_isoseq_with_genome.py \
+        --mapped_fafq hq.no5merge.collapsed.filtered.rep.fa \
+        --read_stat hq.no5merge.collapsed.read_stat.txt\
+        --classify_csv classify_report.csv \
+        -o hq.no5merge.collapsed.filtered.mapped_fl_count.txt
 ```
 
 ### (1d) Classification and Filtering using SQANTI3
