@@ -68,4 +68,12 @@ python <path_to_sqanti3>/sqanti3_RulesFilter.py \
                  hq.no5merge.collapsed.filtered_corrected.gtf
 ```
 
+The post-SQANTI3-filtering results (but before merging with the reference transcriptome) can be found [here](https://github.com/jokelley/brownbear-isoseq-act-hib/tree/main/isoseq_figs/SQANTI3-postFilter-preMerge).
+
+
+### (1e) Merging with Refererence Transcriptome
+
+*Joanna to fill in here*
+
+The final, merged transcriptome can be found [here](https://github.com/jokelley/brownbear-isoseq-act-hib/tree/main/isoseq_figs/FINAL-MergedWithRef).
 
