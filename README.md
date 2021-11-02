@@ -73,7 +73,24 @@ The post-SQANTI3-filtering results (but before merging with the reference transc
 
 ### (1e) Merging with Refererence Transcriptome
 
-*Joanna to fill in here*
+We used [gffcompare](https://ccb.jhu.edu/software/stringtie/gffcompare.shtml) (v 0.11.2) to merge the new transcripts with the existing reference annotation. 
+
+```
+gffcompare \
+                -p BBEAR -o new_merge GCF_003584765.1_ASM358476v1_genomic.gff \ 
+                hq.no5merge.collapsed.filtered_classification.filtered_lite_corrected.gtf
+```
 
 The final, merged transcriptome can be found [here](https://github.com/jokelley/brownbear-isoseq-act-hib/tree/main/isoseq_figs/FINAL-MergedWithRef).
+
+## 2. Mapping short-read data
+
+### (2a) Mapping to Iso-Seq reference
+
+
+hisat2 index hq.no5merge.collapsed.filtered_classification.filtered_lite_corrected.fasta
+
+hisat2 --threads 4 --rf -x isoseq-transcriptome -1 ${reads1} -2 ${reads2} -S /scratch/user/joanna.l.kelley/20210513_204717/pb_${file_name} 
+
+
 
