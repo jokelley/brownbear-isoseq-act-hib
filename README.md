@@ -87,10 +87,10 @@ The final, merged transcriptome can be found [here](https://github.com/jokelley/
 
 ### (2a) Mapping to Iso-Seq reference
 
-
+```
 hisat2 index hq.no5merge.collapsed.filtered_classification.filtered_lite_corrected.fasta
 
 hisat2 --threads 4 --rf -x isoseq-transcriptome -1 ${reads1} -2 ${reads2} -S /scratch/user/joanna.l.kelley/20210513_204717/pb_${file_name} 
-
+```
 
 
