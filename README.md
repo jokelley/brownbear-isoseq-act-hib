@@ -93,4 +93,8 @@ hisat2 index isoseq-transcriptome hq.no5merge.collapsed.filtered_classification.
 hisat2 --threads 4 --rf -x isoseq-transcriptome -1 ${reads1} -2 ${reads2} -S ${outfile_name} 
 ```
 
+### (2b) Kallisto mapping for quantification
+```
+kallisto-v0.46.1/kallisto/kallisto quant -i new_merge --rf-stranded -o ${file_name} -b 100 -t 5 ${reads} 
+```
 
