@@ -10,6 +10,10 @@ Code for Long-read isoform sequencing reveals tissue-specific isoform expression
 
 We pooled all 18 SMRT Cells 1M into a single dataset and ran through Iso-Seq Analysis (v8.1) in [SMRTLink](https://www.pacb.com/products-and-services/analytical-software/). The input to the Iso-Seq Analysis was the pooled HiFi (CCS) reads and the output of the Iso-Seq Analysis was the high-quality, full-length transcript sequences (`hq_transcripts.fasta`). The [Iso-Seq SMRTLink Analysis Report PDF can be found here](https://github.com/jokelley/brownbear-isoseq-act-hib/blob/main/isoseq_figs/SL50279_18cell_bear_IsoSeqJob.pdf). 
 
+Additional required files are available as follows:
+- hq_transcripts.fasta: https://doi.org/10.7273/000003944
+- cluster_report.csv: https://doi.org/10.7273/000003945
+
 ### (1b) Mapping and Collapsing
 
 We mapped the HQ transcripts to the bear genome using [minimap2](https://github.com/lh3/minimap2) and collapsed it using [Cupcake](https://github.com/Magdoll/cDNA_Cupcake), in particular the [post-Iso-Seq processing tutorial](https://github.com/Magdoll/cDNA_Cupcake/wiki/Cupcake:-supporting-scripts-for-Iso-Seq-after-clustering-step).
